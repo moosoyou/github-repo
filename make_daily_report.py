@@ -16,7 +16,7 @@ def summarize_article(title, body):
         logging.warning('OPENAI_API_KEY not set, returning first 3 lines as dummy summary.')
         lines = body.split('\n')
         return lines[:3]
-    openai.api_key = OPENAI_API_KEY
+    client = openai.OpenAI(api_key=OPENAI_API_KEY)
     prompt = f"""
 BioSpace 기사 제목: {title}
 
@@ -31,13 +31,13 @@ BioSpace 기사 제목: {title}
 • ...
 #백신 #실적 #바이오
 """
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.4,
         max_tokens=400
     )
-    summary = response['choices'][0]['message']['content'].strip()
+    summary = response.choices[0].message.content.strip()
     return summary
 
 def shorten_url(url):
