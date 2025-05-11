@@ -64,7 +64,7 @@ def contains_keyword(text, keywords):
 
 def main():
     logging.info('BioSpace RSS+Firecrawl로 뉴스 5개(정책/기업/기술/성과/임상/투자/파트너십 위주) 클리핑 중...')
-    urls = get_news_urls_rss(25)
+    urls = get_news_urls_rss(5)  # 5개 기사만 가져옴
     articles = []
     for i, url in enumerate(urls):
         logging.info(f'[{i+1}/{len(urls)}] 기사 크롤링: {url}')
@@ -77,7 +77,6 @@ def main():
             logging.warning('기사 본문 추출 실패, 건너뜀')
             continue
         articles.append({'url': url, 'title': title, 'body': body})
-
     # 필터링: 정책/기업/기술/성과/임상/투자/파트너십 등 키워드 포함 + (정책 키워드가 있으면 제외키워드 무시)
     filtered = []
     for art in articles:
