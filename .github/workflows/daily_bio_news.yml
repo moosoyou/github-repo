@@ -1,0 +1,35 @@
+name: Daily Bio News to Telegram
+
+on:
+  schedule:
+    - cron: '0 22 * * *'  # UTC 22시는 KST(한국) 오전 7시
+  workflow_dispatch:
+
+jobs:
+  run-news-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Set environment variables
+        run: |
+          echo "FIRECRAWL_API_KEY=${{ secrets.FIRECRAWL_API_KEY }}" >> $GITHUB_ENV
+          echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> $GITHUB_ENV
+          echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> $GITHUB_ENV
+
+      - name: Run pipeline
+        run: |
+          python3 generate_daily_report.py
+          python3 make_daily_report.py
+          python3 send_telegram_report.py 

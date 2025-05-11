@@ -1,0 +1,59 @@
+{
+  "channel": "research",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "해외 제약/바이오 소식 2025년 05월 11일",
+        "emoji": true
+      }
+    },
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "🔬 바이오스페이스 데일리 리포트",
+        "emoji": true
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "▷ 바이오 고용시장 (#대규모해고)\n• 바이오/제약 업계 종사자 74%가 2026년 이후에나 고용 시장이 회복될 것이라 전망\n• 2025년 4월 기준, 1,357명 해고(월간 두 번째로 많은 수치), 테바·BMS 등 대형 제약사에서만 3,400명 이상 해고\n• 업계 전문가 \"현금 관리·비용 절감이 필수, 고용 회복은 당분간 어려울 것\" 진단\nhttps://tinyurl.com/2absz8h3"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "▷ 트럼프 약가정책 (#FDA #약가정책)\n• 트럼프 대통령, 약가 인하 정책 발표 예고, 업계와 환자 단체 모두 강하게 반발\n• IRA(인플레이션 감축법)와 MFN(국제 약가 연동제) 정책 병합 가능성\n• Takeda, Novartis 등 글로벌 제약사 CEO들 \"해당 정책은 업계에 수조 달러 손실 초래\" 경고\n• FDA 인력 대규모 이탈, 주요 신약 심사 지연 등 규제 환경 불확실\nhttps://tinyurl.com/29kybmfh"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "▷ Insitro (#AI바이오)\n• AI 기반 바이오텍 Insitro, 22% 인력 감축(약 65명) 단행, 2027년까지 자금 확보 목적\n• CEO \"불확실한 시장 환경에서 혁신과 핵심 파이프라인 집중 필요\" 강조\n• 최근 Eli Lilly와 대사질환 신약 공동개발 계약 체결, 신기술(갈낙 전달법) 도입 예정\n• 런던 Moorfields Eye Hospital과 AI 기반 안과 바이오마커 연구 협력\nhttps://tinyurl.com/28fozlub"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "▷ Shape/Vor (#감원)\n• Shape Therapeutics, 파이프라인 재정비 위해 인력 감축(규모 비공개)\n• Vor Bio, 임상 데이터 부진 및 자금난으로 전체 직원의 95% 해고(147명)\n• Teva, 2027년까지 전 세계 2,900명 감원 계획, 1분기 실적은 전년 대비 5% 증가\n• Korro Bio, 20% 감원 및 핵심 파이프라인 집중, 2027년까지 운영 자금 확보\nhttps://tinyurl.com/2dfmod3q"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "▷ Novavax (#코로나백신)\n• Novavax, COVID-19 백신 매출 전년 대비 600% 급증\n• FDA 승인 지연으로 시장 불확실성 지속\n• 회사는 추가 임상 및 규제 대응에 집중 중\n• 투자자들은 백신 수요 증가에 따라 향후 실적 개선 기대\nhttps://tinyurl.com/2dc2s5zh"
+      }
+    }
+  ]
+}

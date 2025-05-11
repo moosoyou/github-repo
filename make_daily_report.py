@@ -1,0 +1,118 @@
+import os
+import json
+import datetime
+import re
+import logging
+import openai
+import requests
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+TINYURL_API_KEY = os.getenv('TINYURL_API_KEY')
+
+logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
+
+def summarize_article(title, body):
+    if not OPENAI_API_KEY:
+        logging.warning('OPENAI_API_KEY not set, returning first 3 lines as dummy summary.')
+        lines = body.split('\n')
+        return lines[:3]
+    openai.api_key = OPENAI_API_KEY
+    prompt = f"""
+BioSpace 기사 제목: {title}
+
+아래 기사 본문을 읽고, 핵심 주체(회사/인물/기관, 영어로)와 주요 내용을 한국어로 2~4개 구체적(임상, 재무, 인용 등) 불릿포인트로 요약해줘. 각 불릿포인트는 최대한 데이터 기반, 인용, 수치, 임상결과 등 구체적으로 작성. 마지막 줄에 관련 한국어 해시태그 2~3개를 #으로 시작해 한 줄로 붙여줘.
+
+기사 본문:
+{body}
+
+형식 예시:
+*Novavax* (#1Q25 실적)
+• 1분기 6.67억 달러 매출 시현하며 +610% YoY 성장, 대부분 매출액은 코로나19 백신 Nuvaxovid (6.08억 달러)
+• ...
+#백신 #실적 #바이오
+"""
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.4,
+        max_tokens=400
+    )
+    summary = response['choices'][0]['message']['content'].strip()
+    return summary
+
+def shorten_url(url):
+    try:
+        if TINYURL_API_KEY:
+            api_url = f'https://api.tinyurl.com/create'
+            headers = {'Authorization': f'Bearer {TINYURL_API_KEY}', 'Content-Type': 'application/json'}
+            data = {"url": url}
+            resp = requests.post(api_url, headers=headers, json=data)
+            if resp.ok:
+                return resp.json()['data']['tiny_url']
+        # fallback: public endpoint
+        resp = requests.get(f'https://tinyurl.com/api-create.php?url={url}')
+        if resp.ok:
+            return resp.text.strip()
+    except Exception as e:
+        logging.warning(f'URL 단축 실패: {e}')
+    return url
+
+def format_section_block(summary, short_url):
+    lines = summary.strip().split('\n')
+    hashtags = ''
+    if lines and lines[-1].startswith('#'):
+        hashtags = lines.pop(-1)
+    if hashtags:
+        if '(' in lines[0]:
+            lines[0] = re.sub(r'\)$', f' {hashtags})', lines[0])
+        else:
+            lines[0] += f' ({hashtags})'
+    lines.append(f'{short_url}')
+    return '\n'.join(lines)
+
+def make_daily_report(news_blocks):
+    today = datetime.datetime.now()
+    header_date = today.strftime('%Y년 %m월 %d일')
+    header = f'해외 제약/바이오 소식 {header_date}'
+    blocks = [
+        {"type": "header", "text": {"type": "plain_text", "text": header, "emoji": True}},
+        {"type": "header", "text": {"type": "plain_text", "text": "🔬 바이오스페이스 데일리 리포트", "emoji": True}},
+        {"type": "divider"}
+    ]
+    blocks.extend(news_blocks)
+    return {
+        "channel": "research",
+        "blocks": blocks
+    }
+
+def main():
+    logging.info('clipped_news.json → daily_report.json 변환 시작...')
+    with open('clipped_news.json', 'r', encoding='utf-8') as f:
+        news_items = json.load(f)
+    news_blocks = []
+    for i, news in enumerate(news_items):
+        title = news['title']
+        url = news['url']
+        body = news['body']
+        if not title or not body:
+            logging.warning(f'[{i+1}/5] 기사 본문 추출 실패, 건너뜀')
+            continue
+        summary = summarize_article(title, body)
+        short_url = shorten_url(url)
+        section_block = {
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": format_section_block(summary, short_url)}
+        }
+        news_blocks.append(section_block)
+    while len(news_blocks) < 5:
+        news_blocks.append({
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": "(뉴스 없음)"}
+        })
+    report = make_daily_report(news_blocks[:5])
+    with open('daily_report.json', 'w', encoding='utf-8') as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+    logging.info('daily_report.json 생성 완료!')
+
+if __name__ == '__main__':
+    main() 
