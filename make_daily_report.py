@@ -22,8 +22,8 @@ def summarize_article(title, body):
     if len(body) > max_length:
         body = body[:max_length]
     prompt = f"""
-    ... (생략)
-    """
+
+   
     
 BioSpace 기사 제목: {title}
 
