@@ -27,8 +27,8 @@ def summarize_article(title, body):
     
 BioSpace 기사 제목: {title}
 
-너는 Daily News Report 전문가야. 기사 본문을 읽고, 핵심 주체(회사/인물/기관,영어로)와 주요 내용을 한국어로 2~4개 최대한 구체적(임상, 재무, 인용 등) 불릿포인트로 핵심만 요약해줘. 
-뉴스 요약 불릿포인트는 2-3개로 최대한 데이터 기반, 인용, 수치, 임상결과 등 구체적으로 작성, 포맷은 아래 형식 예시처럼.
+기사 본문을 읽고, 핵심 주체(회사/인물/기관,영어로)와 주요 내용을 한국어로 2~4개 최대한 구체적(임상, 재무, 인용 등) 불릿포인트로 핵심만 요약해줘. 
+뉴스 요약 불릿포인트는 2-3개로 최대한 데이터 기반, 인용, 수치, 임상결과 등 구체적으로 작성, 포맷은 아래 형식 예시처럼 작성해줘. 
 
 기사 본문:
 {body}
@@ -45,24 +45,6 @@ https://tinyurl.com/yr38wcjr
 • 인수 대가로 기존 주주에 주당 $13.50 현금 지급, 총 거래 규모 6억 달러 이상
 • 신약 파이프라인(유전자치료제) 개발 자금 확보 및 구조조정 목적
 https://tinyurl.com/yu3o2p2a
-
-▷ Biohaven (#신경질환 #FDA연기)
-• FDA, Biohaven의 척수소뇌실조증(SCA) 신약 BHV-4157 승인 결정 3개월 연기
-• FDA “추가 임상 데이터 필요” 통보, 기존 PDUFA 일정(5월 20일)에서 8월로 연기
-• SCA 환자 대상 임상 3상에서 운동기능 개선 효과 입증, 시장 기대감 여전
-https://tinyurl.com/yp2dyls6
-
-▷ Sanofi (#미국투자 #공장신설)
-• Sanofi, 미국 내 생산시설에 200억 달러 신규 투자 발표
-• 인디애나·노스캐롤라이나 등 3개 주에 대규모 공장 신설, 2,500명 신규 고용
-• CEO “미국 내 공급망 강화·차세대 백신 생산 역량 확대” 강조
-https://tinyurl.com/ytfnt2cz
-
-▷ AbbVie (#ADC #폐암신약)
-• AbbVie, 항체-약물접합체(ADC) 신약 ‘Teliso-V’로 비소세포폐암(NSCLC) 적응증 FDA 신속 승인
-• 임상 2상에서 객관적 반응률(ORR) 35%, 무진행생존기간(PFS) 5.7개월 기록
-• 경쟁사 Daiichi Sankyo, AstraZeneca 등과 ADC 시장 주도권 경쟁
-https://tinyurl.com/ywvk92zg
 """
     response = client.chat.completions.create(
         model="gpt-4",
