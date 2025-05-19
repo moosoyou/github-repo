@@ -25,19 +25,18 @@ def summarize_article(title, body):
 
 BioSpace 기사 제목: {title}
 
-Read the news and provide detailed yet compact report. DO NOT HALLUCINATE
-Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
-MAKE ALL NEWS FORMATTED AS BELOW sample.
+You are very talented Daily News Report creator.
+Read through the news and come up with news in format like:
+
+First line starts with ' ▷ Key entity (#keyword1, #keyword2)'
+then followed by detailed yet compact bullet points summarizing news in Korean,
+last but not least, followed by tinyurl shortened link.
 
 기사 본문:
 {body}
 
 Format sample:
-▷ FDA (#항암제심사 #인력감축)
-• FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
-• 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
-• 내부 관계자 “심사 신뢰성·전문성 저하 우려…내주 3건 항암제 심사 일정 차질 가능성”
-<link>
+
 
 """
     response = client.chat.completions.create(
