@@ -27,8 +27,7 @@ BioSpace 기사 제목: {title}
 
 Read the news and provide detailed yet compact report. DO NOT HALLUCINATE
 Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
-Format all each news in accordance to the sample below. For each news, just include one SHORTENED NEWS LINK.
-Make sure the format is identical for all the news that you'll provide in the report.
+MAKE ALL NEWS FORMATTED AS BELOW sample.
 
 기사 본문:
 {body}
@@ -38,7 +37,7 @@ Format sample:
 • FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
 • 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
 • 내부 관계자 “심사 신뢰성·전문성 저하 우려…내주 3건 항암제 심사 일정 차질 가능성”
-<newslink>
+<link>
 
 """
     response = client.chat.completions.create(
