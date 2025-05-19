@@ -5,6 +5,7 @@ import re
 import logging
 import openai
 import requests
+import time
 
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 TINYURL_API_KEY = os.getenv('TINYURL_API_KEY')
@@ -104,6 +105,7 @@ def main():
             "text": {"type": "mrkdwn", "text": format_section_block(summary, short_url)}
         }
         news_blocks.append(section_block)
+        time.sleep(1) 
     while len(news_blocks) < 5:
         news_blocks.append({
             "type": "section",
