@@ -27,8 +27,9 @@ def summarize_article(title, body):
     
 BioSpace 기사 제목: {title}
 
-기사 본문을 읽고, Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
-Format all each news in accordance to the sample below
+Read the news and provide detailed yet compact report. DO NOT HALLUCINATE
+Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
+Format all each news in accordance to the sample below. For news link, just provide one shortened link. no duplicated links
 Make sure the format is identical for all the news that you'll provide in the report.
 
 기사 본문:
