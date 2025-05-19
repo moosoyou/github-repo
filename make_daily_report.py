@@ -23,12 +23,8 @@ def summarize_article(title, body):
         body = body[:max_length]
     prompt = f"""
 
-BioSpace 기사 제목: {title}
-
-You are very talented Daily News Report creator.
-Refer to the format below, and create visually neat news report.
-2-3 bullet points including the specifics (whether it be clinial data, deal or etc) in Korean,
-then a tinyurl shortened link that any viewer can access. Single link for each news, no double links.
+You are very talented Daily News Report creator. Read through the biospace news then refer to the format below, and create visually neat news report.
+2-3 bullet points including the specifics (whether it be clinial data, deal or etc) in Korean
 
 기사 본문:
 {body}
