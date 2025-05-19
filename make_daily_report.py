@@ -29,7 +29,7 @@ BioSpace 기사 제목: {title}
 
 Read the news and provide detailed yet compact report. DO NOT HALLUCINATE
 Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
-Format all each news in accordance to the sample below. For news link, just provide one shortened link. no duplicated links
+Format all each news in accordance to the sample below. For each news, just include one SHORTENED NEWS LINK.
 Make sure the format is identical for all the news that you'll provide in the report.
 
 기사 본문:
@@ -40,13 +40,7 @@ Format sample:
 • FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
 • 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
 • 내부 관계자 “심사 신뢰성·전문성 저하 우려…내주 3건 항암제 심사 일정 차질 가능성”
-https://tinyurl.com/yr38wcjr
-
-▷ Bluebird (#바이아웃 #유전자치료제)
-• Bluebird, 사모펀드에 인수되며 주주에 현금 유입 확대
-• 인수 대가로 기존 주주에 주당 $13.50 현금 지급, 총 거래 규모 6억 달러 이상
-• 신약 파이프라인(유전자치료제) 개발 자금 확보 및 구조조정 목적
-https://tinyurl.com/yu3o2p2a
+<shortened newslink>
 
 """
     response = client.chat.completions.create(
