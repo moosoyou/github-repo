@@ -23,8 +23,6 @@ def summarize_article(title, body):
         body = body[:max_length]
     prompt = f"""
 
-   
-    
 BioSpace 기사 제목: {title}
 
 Read the news and provide detailed yet compact report. DO NOT HALLUCINATE
@@ -40,7 +38,7 @@ Format sample:
 • FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
 • 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
 • 내부 관계자 “심사 신뢰성·전문성 저하 우려…내주 3건 항암제 심사 일정 차질 가능성”
-<shortened newslink>
+<newslink>
 
 """
     response = client.chat.completions.create(
