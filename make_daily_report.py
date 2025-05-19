@@ -18,7 +18,13 @@ def summarize_article(title, body):
         lines = body.split('\n')
         return lines[:3]
     client = openai.OpenAI(api_key=OPENAI_API_KEY)
+    max_length = 2000
+    if len(body) > max_length:
+        body = body[:max_length]
     prompt = f"""
+    ... (생략)
+    """
+    
 BioSpace 기사 제목: {title}
 
 아래 기사 본문을 읽고, 핵심 주체(회사/인물/기관, 영어로)와 주요 내용을 한국어로 2~4개 구체적(임상, 재무, 인용 등) 불릿포인트로 요약해줘. 각 불릿포인트는 최대한 데이터 기반, 인용, 수치, 임상결과 등 구체적으로 작성. 마지막 줄에 관련 한국어 해시태그 2~3개를 #으로 시작해 한 줄로 붙여줘.
