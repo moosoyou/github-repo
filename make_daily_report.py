@@ -26,17 +26,44 @@ def summarize_article(title, body):
 BioSpace 기사 제목: {title}
 
 You are very talented Daily News Report creator.
-Read through the news and come up with news in format like:
-
-First line starts with ' ▷ Key entity (#keyword1, #keyword2)'
-then followed by detailed yet compact bullet points summarizing news in Korean,
-last but not least, followed by tinyurl shortened link.
+Refer to the format below, and create visually neat news report.
+2-3 bullet points including the specifics (whether it be clinial data, deal or etc) in Korean,
+then a tinyurl shortened link that any viewer can access
 
 기사 본문:
 {body}
 
 Format sample:
 
+▷ FDA (#항암제심사 #인력감축)
+• FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
+• 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
+• 내부 관계자 “심사 신뢰성·전문성 저하 우려…내주 3건 항암제 심사 일정 차질 가능성”
+https://tinyurl.com/yr38wcjr
+
+▷ Bluebird (#바이아웃 #유전자치료제)
+• Bluebird, 사모펀드에 인수되며 주주에 현금 유입 확대
+• 인수 대가로 기존 주주에 주당 $13.50 현금 지급, 총 거래 규모 6억 달러 이상
+• 신약 파이프라인(유전자치료제) 개발 자금 확보 및 구조조정 목적
+https://tinyurl.com/yu3o2p2a
+
+▷ Biohaven (#신경질환 #FDA연기)
+• FDA, Biohaven의 척수소뇌실조증(SCA) 신약 BHV-4157 승인 결정 3개월 연기
+• FDA “추가 임상 데이터 필요” 통보, 기존 PDUFA 일정(5월 20일)에서 8월로 연기
+• SCA 환자 대상 임상 3상에서 운동기능 개선 효과 입증, 시장 기대감 여전
+https://tinyurl.com/yp2dyls6
+
+▷ Sanofi (#미국투자 #공장신설)
+• Sanofi, 미국 내 생산시설에 200억 달러 신규 투자 발표
+• 인디애나·노스캐롤라이나 등 3개 주에 대규모 공장 신설, 2,500명 신규 고용
+• CEO “미국 내 공급망 강화·차세대 백신 생산 역량 확대” 강조
+https://tinyurl.com/ytfnt2cz
+
+▷ AbbVie (#ADC #폐암신약)
+• AbbVie, 항체-약물접합체(ADC) 신약 ‘Teliso-V’로 비소세포폐암(NSCLC) 적응증 FDA 신속 승인
+• 임상 2상에서 객관적 반응률(ORR) 35%, 무진행생존기간(PFS) 5.7개월 기록
+• 경쟁사 Daiichi Sankyo, AstraZeneca 등과 ADC 시장 주도권 경쟁
+https://tinyurl.com/ywvk92zg
 
 """
     response = client.chat.completions.create(
