@@ -27,13 +27,14 @@ def summarize_article(title, body):
     
 BioSpace 기사 제목: {title}
 
-기사 본문을 읽고, 핵심 주체(회사/인물/기관,영어로)와 주요 내용을 한국어로 2~4개 최대한 구체적(임상, 재무, 인용 등) 불릿포인트로 핵심만 요약해줘. 
-뉴스 요약 불릿포인트는 2-3개로 최대한 데이터 기반, 인용, 수치, 임상결과 등 구체적으로 작성, 포맷은 아래 형식 예시처럼 작성해줘. 
+기사 본문을 읽고, Key entity (company/person/institution in English) with detailed yet compact 2-3 bullet points including the main content of the news in Korean (clinical trials, finance, or quotations)
+Format all each news in accordance to the sample below
+Make sure the format is identical for all the news that you'll provide in the report.
 
 기사 본문:
 {body}
 
-형식 예시:
+Format sample:
 ▷ FDA (#항암제심사 #인력감축)
 • FDA, 항암제 자문위(ODAC) 준비 과정에서 인력 감축 여파로 혼란 발생
 • 기존 전문 인력 대거 이탈, 자문위 준비에 경험 부족 자원봉사자 투입
@@ -45,6 +46,7 @@ https://tinyurl.com/yr38wcjr
 • 인수 대가로 기존 주주에 주당 $13.50 현금 지급, 총 거래 규모 6억 달러 이상
 • 신약 파이프라인(유전자치료제) 개발 자금 확보 및 구조조정 목적
 https://tinyurl.com/yu3o2p2a
+
 """
     response = client.chat.completions.create(
         model="gpt-4",
