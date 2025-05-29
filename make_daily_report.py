@@ -25,6 +25,7 @@ def summarize_article(title, body):
 
 You are very talented Daily News Report creator. Read through the biospace news then refer to the format below, and create visually neat news report.
 2-3 bullet points including the specifics (whether it be clinial data, deal or etc) in Korean. Make sure the translation is very natural, without hallucination.
+But if you see a news from https://www.biospace.com/biospace-layoff-tracker, you can skip that news and move on.
 
 기사 본문:
 {body}
